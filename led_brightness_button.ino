@@ -25,7 +25,7 @@ void loop() {
   Serial.print(" | Debounced state: ");
   Serial.println(buttonState);
 
-  // Check for state change
+  // Debounce: reset the timer when a change in the button is detected
   if (currentReading != lastButtonReading) {
     lastDebounceTime = millis();  // Reset debounce timer
   }
