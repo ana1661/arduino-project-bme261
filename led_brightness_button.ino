@@ -36,9 +36,16 @@ void loop() {
       buttonState = currentReading;
 
       // On button press (LOW due to pull-up)
-      if (buttonState == LOW) {
-        level = (level + 1) % 4;  // Cycle through 0–3
-        analogWrite(ledPin, brightnessLevels[level]);
+      if (brightnessLevels[level] == 255) {
+      // Blink twice to indicate max brightness
+        for (int i = 0; i < 2; i++) {
+          digitalWrite(ledPin, LOW);
+          delay(100);
+          digitalWrite(ledPin, HIGH);
+          delay(100);
+        }
+        analogWrite(ledPin, 255);  // Return to full brightness
+      }
 
         Serial.print("Button Pressed! New brightness level: ");
         String label[] = {"Off", "Low", "Medium", "High"};
