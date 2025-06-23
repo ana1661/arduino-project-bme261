@@ -41,7 +41,10 @@ void loop() {
         analogWrite(ledPin, brightnessLevels[level]);
 
         Serial.print("Button Pressed! New brightness level: ");
-        Serial.println(brightnessLevels[level]);
+        String label[] = {"Off", "Low", "Medium", "High"};
+        Serial.print(" (");
+        Serial.print(label[level]);
+        Serial.println(")");
       }
     }
   }
